@@ -1,0 +1,284 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Biochimie</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	
+<div id="xdd" rel="stylesheet">
+	<div>Utilizator: <span id="user"></span></div>
+	<div>Carla: <span id="chatbot"></span></div>
+	<div><input id="input" type="text" color="#e44c65" placeholder="Ask Carla something..." autocomplete="off" /></div>
+</div>
+<script type="text/javascript">
+
+var trigger = [
+	"salut", "ce faci", "ce este biochimia", "cum te numesti","care sunt moleculele vietii","sugi pula","salut","hei"
+];
+var reply = [
+	["Salut"],
+	["Invat despre biochimie, tu?"],
+	["Biochimia este stiinta care studiaza compozitia chimica a organismelor vii, structura si proprietatile substantelor componente, precum si transformarile la care sunt supuse aceste substante in interiorul organismelor vii."],
+	["Carla"],
+	["Moleculele vietii sunt proteinele și aminoacizii, glucidele, lipidele, acizii nucleici"],
+	["Nu, tu sugi pula"],
+	["Salut"],
+	["Hei"]
+];
+var alternative = ["Haha...", "Eh..."];
+document.querySelector("#input").addEventListener("keypress", function(e){
+	var key = e.which || e.keyCode;
+	if(key === 13){ //Enter button
+		var input = document.getElementById("input").value;
+		document.getElementById("user").innerHTML = input;
+		output(input);
+	}
+});
+function output(input){
+	try{
+		var product = input + "=" + eval(input);
+	} catch(e){
+		var text = (input.toLowerCase()).replace(/[^\w\s\d]/gi, ""); //remove all chars except words, space and 
+		text = text.replace(/ a /g, " ").replace(/i feel /g, "").replace(/whats/g, "what is").replace(/please /g, "").replace(/ please/g, "");
+
+		if(compare(trigger, reply, text)){
+			var product = compare(trigger, reply, text);
+		} else {
+			var product = alternative[Math.floor(Math.random()*(alternative.length - 1))];
+		}
+	}
+	document.getElementById("chatbot").innerHTML = product;
+	//speak(product);
+	document.getElementById("input").value = ""; //clear input value
+}
+
+function compare(arr, array, string){
+	var item;
+	
+	for(var i = 0; i < arr.length; i++){
+		if(arr[i] == string){
+			var tmp =  Math.floor(Math.random()*(array[i].length - 1));
+			item = array[i][tmp];
+		}
+	}
+	
+	return item;
+}
+function speak(string){
+	var utterance = new SpeechSynthesisUtterance();
+	utterance.voice = speechSynthesis.getVoices().filter(function(voice){return voice.name == "Agnes";})[0];
+	utterance.text = string;
+	utterance.lang = "en-US";
+	utterance.volume = 1; //0-1 interval
+	utterance.rate = 1;
+	utterance.pitch = 2; //0-2 interval
+	speechSynthesis.speak(utterance);
+}
+</script>
+
+	<body class="landing">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo"><a href="index.html">InfoChim</a></h1>
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li>
+								<a href="#">Meniu</a>
+								<ul>
+									<li><a href="left-sidebar.html">Left Sidebar</a></li>
+									<li><a href="right-sidebar.html">Right Sidebar</a></li>
+									<li><a href="no-sidebar.html">No Sidebar</a></li>
+									<li>
+										<a href="#">Submenu</a>
+										<ul>
+											<li><a href="#">Option 1</a></li>
+											<li><a href="#">Option 2</a></li>
+											<li><a href="#">Option 3</a></li>
+											<li><a href="#">Option 4</a></li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li><a href="elements.html">Elements</a></li>
+							<li><a href="signup.html" class="button special">Sign Up</a></li>
+						</ul>
+					</nav>
+				</header>
+
+			<!-- Banner -->
+				<section id="banner">
+					<div class="content">
+						<header>
+							<h2>InfoChim</h2>
+							<p><strong>Biochimia este stiinta care studiaza</strong><br />
+							compozitia chimica a organismelor vii,<br /> structura si proprietatile substantelor componente,<br /> precum si transformarile la care sunt supuse aceste substante<br /> in interiorul organismelor vii.</p>
+						</header>
+						<span class="image"><img src="images/pic01.png" alt="" /></span>
+					</div>
+					<a href="#one" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- One -->
+				<section id="one" class="spotlight style1 bottom">
+					<span class="image fit main"><img src="images/pic02.jpg" alt="" /></span>
+					<div class="content">
+						<div class="container">
+							<div class="row">
+								<div class="4u 12u$(medium)">
+									<header>
+										<h2>Biochimia Structurala</h2>
+										<p>se ocupă cu studiul moleculelor vieții: -></p>
+									</header>
+								</div>
+								<div class="4u 12u$(medium)">
+									<p>
+									proteine și aminoacizi, glucide, lipide, acizi nucleici</p>
+								</div>
+								<div class="4u$ 12u$(medium)">
+									<p>De asemenea, această ramură studiază și vitaminele și enzimele.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<a href="#two" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Two -->
+				<section id="two" class="spotlight style2 right">
+					<span class="image fit main"><img src="images/pic03.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Biochimia metabolismelor</h2>
+							<p>studiază căile metabolice prin care nutrienții sunt procesați în interiorul celulelor vii (anabolism și catabolism).</p>
+						</header>
+						<p>Aici voi scrie chestia complicata stiintifica</p>
+						<ul class="actions">
+							<li><a href="#" class="button">Learn More</a></li>
+						</ul>
+					</div>
+					<a href="#three" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Three -->
+				<section id="three" class="spotlight style3 left">
+					<span class="image fit main bottom"><img src="images/pic04.jpg" alt="" /></span>
+					<div class="content">
+						<header>
+							<h2>Importanța biochimiei</h2>
+							<p>•	oferă cunoștințele necesare înțelegerii stării de sănătate și a mecanismelor patogenice în orice boală;</p>
+							<p>•	permite tratarea cu succes a avitaminozelor, a insuficienței sau hiperfuncțiilor endocrine;</p>
+							<p>•	explică modul de acțiune al medicamentelor, ca modulatori ai activității enzimatice, oferind datele necesare pentru sinteza de substanțe cu acțiune farmacologică dorită.</p>
+						</header>
+						<p></p>
+						<ul class="actions">
+							<li><a href="#" class="button">Learn More</a></li>
+						</ul>
+					</div>
+					<a href="#four" class="goto-next scrolly">Next</a>
+				</section>
+
+			<!-- Four -->
+				<section id="four" class="wrapper style1 special fade-up">
+					<div class="container">
+						<header class="major">
+							<h2>Conținutul procentual al principalelor
+biomolecule din organismele vegetale, animale și organismul uman</h2>
+							<p>We, Xd am zis de editat fmm XD</p>
+						</header>
+						<img src="images/capture.jpg">
+						<!--<div class="box alt">
+							<div class="row uniform">
+								<section class="4u 6u(medium) 12u$(xsmall)">
+									<span class="icon alt major fa-area-chart"></span>
+									<h3>Vrajeala</h3>
+									<p>Tot vrajeala</p>
+								</section>
+								<section class="4u 6u$(medium) 12u$(xsmall)">
+									<span class="icon alt major fa-comment"></span>
+									<h3>Alta vrajeala</h3>
+									<p>Si mai multa vrajeala</p>
+								</section>
+								<section class="4u$ 6u(medium) 12u$(xsmall)">
+									<span class="icon alt major fa-flask"></span>
+									<h3>XDD SIIIII guesss what ?!</h3>
+									<p>VRAJEALAAAA XDD</p>
+								</section>
+								<section class="4u 6u$(medium) 12u$(xsmall)">
+									<span class="icon alt major fa-paper-plane"></span>
+									<h3>Stiti deja spilu XD</h3>
+									<p>AHAAAA XDDD VRAJEALAAA LA TOATA LUMIAAA XDDDD AHAAAAA </p>
+								</section>
+								<section class="4u 6u(medium) 12u$(xsmall)">
+									<span class="icon alt major fa-file"></span>
+									<h3>WE, VRajeala am zis </h3>
+									<p>VRAJEALAAAAAAA</p>
+								</section>
+								<section class="4u$ 6u$(medium) 12u$(xsmall)">
+									<span class="icon alt major fa-lock"></span>
+									<h3>chestii de infrastructura de cal xd </h3>
+									<p>AHAAAA daaaa bumti bumti DAAA Ahaaa xd </p>
+								</section>
+							</div>
+						</div>-->
+						<footer class="major">
+							<ul class="actions">
+								<li><a href="#" class="button">aha xd</a></li>
+							</ul>
+						</footer>
+					</div>
+				</section>
+
+			<!-- Five -->
+				<section id="five" class="wrapper style2 special fade">
+					<div class="container">
+						<header>
+							<h2>Ia lasa tu boss emailul acisilea </h2>
+							<p>(La baiatuuu XD )</p>
+						</header>
+						<form method="post" action="#" class="container 50%">
+							<div class="row uniform 50%">
+								<div class="8u 12u$(xsmall)"><input type="email" name="email" id="email" placeholder="Your Email Address" /></div>
+								<div class="4u$ 12u$(xsmall)"> <input type="submit" value="Get started" class="fit special" /></div>
+							</div>
+						</form>
+					</div>
+				</section>
+
+			<!-- Footer -->
+				<footer id="footer">
+					<ul class="icons">
+						<li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+							<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">Sefu banilor</a></li>
+					</ul>
+				</footer>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
