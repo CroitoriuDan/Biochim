@@ -54,7 +54,7 @@ function output(input){
 		}
 	}
 	document.getElementById("chatbot").innerHTML = product;
-	//speak(product);
+	speak(product);
 	document.getElementById("input").value = ""; //clear input value
 }
 
@@ -74,7 +74,7 @@ function speak(string){
 	var utterance = new SpeechSynthesisUtterance();
 	utterance.voice = speechSynthesis.getVoices().filter(function(voice){return voice.name == "Agnes";})[0];
 	utterance.text = string;
-	utterance.lang = "en-US";
+	utterance.lang = "ro-RO";
 	utterance.volume = 1; //0-1 interval
 	utterance.rate = 1;
 	utterance.pitch = 2; //0-2 interval
@@ -90,6 +90,7 @@ function speak(string){
 					<h1 id="logo"><a href="index.html">InfoChim</a></h1>
 					<nav id="nav">
 						<ul>
+							<li><a href="searchBar.html"> Search </a></li>
 							<li><a href="index.html">Home</a></li>
 							<li>
 								<a href="#">Meniu</a>
