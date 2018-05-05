@@ -19,6 +19,14 @@ span {
 ::-webkit-input-placeholder { 
 	color: #711 
 }*/
+btn-minimize {
+    width: 50px;
+    height: 50px;
+    background-color: #F00;
+}
+.btn-minimize.btn-plus {
+    background-color: #0F0;
+}
 #xdd {
 border: 0.5rem outset gray;
   box-shadow: 0 0 0 2rem transparent;

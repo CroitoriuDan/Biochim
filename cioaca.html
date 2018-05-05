@@ -1,0 +1,215 @@
+<html>
+    <head>
+    <title>chatbox for bot</title>
+    </head>
+    <style>
+.popup-wrapper {
+    position: fixed;
+    background-color: #FFFFFF;
+    right: 50px;
+    bottom: 0px;
+    padding: 0px;
+    height: 410px;
+    width: 250px;
+    z-index: 200;
+    -moz-border-radius:10px 10px 0px 0px;  
+    border-radius:10px 10px 0px 0px;
+}
+
+.popup-header {
+    background-color: #5b6fc7;
+    color: #ffffff;
+    height: 10%;
+    padding: 10px 10px 5px 10px;
+    -moz-border-radius:10px 10px 0px 0px;  
+    border-radius:10px 10px 0px 0px;
+
+}
+
+.popup-tab {
+    position: fixed;
+    right: 50px;
+    bottom: 0px;
+    padding: 10px 10px 5px 10px;
+    background-color: #5b6fc7;
+    height: 40px;
+    width: 250px;
+    z-index: 200;
+    cursor: pointer;
+    -moz-border-radius:10px 10px 0px 0px;  
+    border-radius:10px 10px 0px 0px;
+    color: #ffffff;
+}
+
+.botMessage {
+    background-color: #eeeeee;
+    position: relative;
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+    -moz-border-radius:10px 10px 10px 10px;  
+    border-radius:10px 10px 10px 10px;
+}
+
+.humanMessage {
+    background-color: #5b6fc7;
+    position: relative;
+    color: #FFF;
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+    float: right;
+    -moz-border-radius:10px 10px 10px 10px;  
+    border-radius:10px 10px 10px 10px;
+}
+
+
+.close-chat, .minimize-chat {
+    cursor: pointer;
+    margin-right: 5px;
+    float: right !important;
+}
+
+.convo {
+    height: 320px;
+    padding: 5px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #eeeeee;
+}
+
+.chatlog {
+  width: 750px;
+  height: 300px;
+  padding: 5px;
+  border: 1px solid #000000;
+}
+
+.scroll {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.agentMessage {
+    background-color: #5cb85c;
+    position: relative;
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+    -moz-border-radius:10px 10px 10px 10px;  
+    border-radius:10px 10px 10px 10px;
+}
+
+form#talkform {
+    width
+    height: 50px;
+    padding: 10px 10px 5px 10px;
+    -moz-border-radius:10px 10px 10px 10px;  
+    border-radius:10px 10px 10px 10px;
+
+
+
+/*
+.say something {
+    width: 0px;
+    border-color: #ffffff;
+    border-style: solid;
+}
+*/
+
+}
+.hidden {
+    display: none !important;
+    visibility: hidden !important;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#popup-WrapperClose {
+  width: 15px;
+  height: 15px;
+  z-index: 12;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+#popup-WrapperMini {
+  width: 15px;
+  height: 15px;
+  z-index: 12;
+  border-radius: 50%;
+  background-color: green;
+  position: absolute;
+  top: 15px;
+  right: 45px;
+}
+
+img {
+  display: block;
+  margin: 80px auto -60px auto;
+}
+</style>
+    <body>
+    <title>chatbox for bot</title>
+<div id="wrapper">
+  <div class="popup-header" class="popup-header" >
+    <b>
+            Talk to 
+            <span class="botname">Ella</span>
+        </b>
+    <input id="popup-WrapperMini" type="button" onclick="windowMin();">
+    <input id="popup-WrapperClose" type="button" onclick="windowClose();">
+  </div>
+  <div id="popup-wrapper" class="popup-wrapper">
+    <div class="popup-chat">
+      <div class="response hidden"></div>
+      <div class="convo scroll">
+        <div class="humanMessage">
+          <div class="usersay">&nbsp;</div>
+        </div>
+        <br>
+        <div class="botMessage">
+          <div class="ella">
+            <div class="botsay"></div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <form method="post" name="talkform" id="talkform" action="index.php">
+        <form id="talkform" class="talkform">
+          <input id="say" name="say" placeholder="say something" type="text">
+          <input id="say-button" class="say-button" name="say-button" value="say" type="submit">
+        </form>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+    $('#popup-wrapperClose').click( function() {
+      $("#popup-wrapper").hide(300);
+    });
+
+    $('#popup-wrapperMini').click( function() {
+      if (minimize === false) {
+        $("#popup-wrapperMini").hide();
+        $('#popup-wrapper').css('display','block');
+        minimize = true;
+      } else {
+        $("#popup-wrapper").show();
+        $('#popup-wrapper').css('display','none');
+        minimize = false;
+      }
+    });
+     return false;
+});
+</script>
+  </body>
+</html>  

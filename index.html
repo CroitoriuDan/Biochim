@@ -11,13 +11,55 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 	
-<div id="xdd" rel="stylesheet">
+<div id="xdd" class="popup-header" rel="stylesheet">
 	<div>Utilizator: <span id="user"></span></div>
 	<div>Carla: <span id="chatbot"></span></div>
 	<div><input id="input" type="text" color="#e44c65" placeholder="Ask Carla something..." autocomplete="off" /></div>
-</div>
-<script type="text/javascript">
+	<input id="popup-WrapperClose" type="button" onclick="windowClose();"></input>
+    <input id="popup-WrapperMini" type="button" onclick="windowMin();"></input>
+	<script>
+var minimize = false;
 
+function windowClose() {
+  var e = document.getElementById("xdd");
+  e.style.display = "none";
+}
+
+function windowMin() {
+  var e = document.getElementById("chatbot");
+  if (minimize === false) {
+    // minimize (hide)
+    // e.style.display = "none";
+    addClass(e, "wrapper-min");
+    minimize = true;
+  } else {
+    // show
+    // e.style.display = "block";
+    removeClass(e, "wrapper-min");
+    minimize = false;
+  }
+}
+
+function addClass(e, name) {
+    if (typeof e !== "undefined" && typeof e.classList !== "undefined" && name.length > 0){
+    e.classList.add(name)
+    }
+}
+
+function removeClass(e, name) {
+    if (typeof e !== "undefined" && typeof e.classList !== "undefined"){
+    e.classList.remove(name);
+    }
+}
+</script>
+</div>
+<!--<button class="btn-minimize"></button>
+	<script type="text/javascript">$(".btn-minimize").click(function(){
+    $(this).toggleClass('btn-plus');
+    $("#xdd").slideToggle();
+  });</script>
+-->
+<script type="text/javascript">
 var trigger = [
 	"salut", "ce faci", "ce este biochimia", "cum te numesti","care sunt moleculele vietii","sugi pula","salut","hei"
 ];
@@ -54,7 +96,7 @@ function output(input){
 		}
 	}
 	document.getElementById("chatbot").innerHTML = product;
-	speak(product);
+	//speak(product);
 	document.getElementById("input").value = ""; //clear input value
 }
 
@@ -74,7 +116,7 @@ function speak(string){
 	var utterance = new SpeechSynthesisUtterance();
 	utterance.voice = speechSynthesis.getVoices().filter(function(voice){return voice.name == "Agnes";})[0];
 	utterance.text = string;
-	utterance.lang = "ro-RO";
+	utterance.lang = "en-US";
 	utterance.volume = 1; //0-1 interval
 	utterance.rate = 1;
 	utterance.pitch = 2; //0-2 interval
@@ -90,7 +132,17 @@ function speak(string){
 					<h1 id="logo"><a href="index.html">InfoChim</a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="searchBar.html"> Search </a></li>
+                            <li><form autocomplete="off" style="color:black;">
+                                
+                                    <input id="mySubmit" type="button" style="margin-top: 0px" value = "Search" onclick="sub()">
+                                  <div class="autocomplete" style="width:300px; color:black;">
+                                    
+                                    <input id="myInput" type="text" target="index.html">
+                                  
+                                    <script src="assets/js/searchBar.js"></script>
+                                    <link rel="stylesheet" href="assets/css/searchBar.css" />
+                                  </div>
+		                      </form></li>
 							<li><a href="index.html">Home</a></li>
 							<li>
 								<a href="#">Meniu</a>
@@ -98,7 +150,7 @@ function speak(string){
 									<li><a href="left-sidebar.html">Left Sidebar</a></li>
 									<li><a href="right-sidebar.html">Right Sidebar</a></li>
 									<li><a href="no-sidebar.html">No Sidebar</a></li>
-									<li>
+									<!--<li>
 										<a href="#">Submenu</a>
 										<ul>
 											<li><a href="#">Option 1</a></li>
@@ -106,7 +158,7 @@ function speak(string){
 											<li><a href="#">Option 3</a></li>
 											<li><a href="#">Option 4</a></li>
 										</ul>
-									</li>
+									</li>-->
 								</ul>
 							</li>
 							<li><a href="elements.html">Elements</a></li>
@@ -123,7 +175,7 @@ function speak(string){
 							<p><strong>Biochimia este stiinta care studiaza</strong><br />
 							compozitia chimica a organismelor vii,<br /> structura si proprietatile substantelor componente,<br /> precum si transformarile la care sunt supuse aceste substante<br /> in interiorul organismelor vii.</p>
 						</header>
-						<span class="image"><img src="images/pic01.png" alt="" /></span>
+						<span class="image"><img src="images/augu.png" alt="" /></span>
 					</div>
 					<a href="#one" class="goto-next scrolly">Next</a>
 				</section>
@@ -265,7 +317,7 @@ biomolecule din organismele vegetale, animale și organismul uman</h2>
 							<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
 					</ul>
 					<ul class="copyright">
-						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">Sefu banilor</a></li>
+						<li>&copy;BiochimTeam</li><li>Design: Elevi la <a href="http://liis.ro">Liis</a></li>
 					</ul>
 				</footer>
 
