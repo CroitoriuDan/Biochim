@@ -27,7 +27,7 @@ function autocomplete(inp, arr) {
             if (arr[i][0].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                 b = document.createElement("div");
             
-                b.innerHTML = "<strong style='color:black;'>" + arr[i][0].substr(0, val.length) + "</strong>"
+                b.innerHTML = "<strong style='color:green;'>" + arr[i][0].substr(0, val.length) + "</strong>"
                 b.innerHTML += arr[i][0].substr(val.length);
             
                 b.innerHTML += "<input type='hidden' value='" + arr[i][0] + "'>";
